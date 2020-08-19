@@ -1,6 +1,23 @@
-// Import here Polyfills if needed. Recommended core-js (npm i -D core-js)
-  // import "core-js/fn/array.find"
-  // ...
-export default class DummyClass {
+import { Pool, PoolConfig } from "pg";
+import { WithDatabase as WithDatabase } from "./WithDatabase";
+import { queries } from "./queries";
 
-}
+export const klar = (config: PoolConfig = {}) => {
+
+    const pool = new Pool(config)
+
+    pool.on('error', (err, client) => {
+        console.error('Unexpected error on idle client', err);
+        process.exit(-1)
+    });
+
+    const withDatabase: WithDatabase =
+        <T>(action: (pool: Pool) => Promise<T>) =>
+            action(pool)
+
+
+    return queries(withDatabase);
+};
+
+
+
