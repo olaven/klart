@@ -1,6 +1,6 @@
 {
   "name": "klart",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Clear postgres queries, built on node-pg",
   "license": "LGPL-2.1",
   "keywords": [
@@ -26,7 +26,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
-    "test": "jest --coverage --forceExit --detectOpenHandles",
+    "test": "jest --forceExit --detectOpenHandles",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
