@@ -1,5 +1,5 @@
 {
-  "name": "klar",
+  "name": "klart",
   "version": "0.0.1",
   "description": "Clear postgres queries, built on node-pg",
   "license": "LGPL-2.1",
@@ -10,9 +10,9 @@
     "query",
     "typescript"
   ],
-  "main": "dist/klar.umd.js",
-  "module": "dist/klar.es5.js",
-  "typings": "dist/types/klar.d.ts",
+  "main": "dist/klart.umd.js",
+  "module": "dist/klart.es5.js",
+  "typings": "dist/types/klart.d.ts",
   "files": [
     "dist"
   ],

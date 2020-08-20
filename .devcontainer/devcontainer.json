@@ -1,7 +1,7 @@
 {
-	"name": "Klar Development",
+	"name": "Klart Development",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "klar-workspace",
+	"service": "klart-workspace",
 	"workspaceFolder": "/workspace",
 	"forwardPorts": [
 		5444

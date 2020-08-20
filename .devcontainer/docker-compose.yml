@@ -1,6 +1,6 @@
 version: '3'
 services:
-  klar-workspace:
+  klart-workspace:
     image: node:14
     volumes:
       - ..:/workspace:cached
