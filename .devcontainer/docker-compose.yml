@@ -2,10 +2,6 @@ version: '3'
 services:
   klar-workspace:
     image: node:14
-      # context: .
-      # dockerfile: Dockerfile
-      # args:
-      #   VARIANT: 12
     volumes:
       - ..:/workspace:cached
     command: sleep infinity
