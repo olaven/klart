@@ -1,10 +1,11 @@
 import * as faker from 'faker'
-import { klar } from '../src/klar'
+import { klart } from '../src/klart'
 
 
 require('dotenv').config();
 
 describe('Klar', () => {
+
   //NOTE: tests have `dogs`-table as an example
   interface Dog {
     id?: string
@@ -16,7 +17,7 @@ describe('Klar', () => {
     age: faker.random.number()
   });
 
-  const { first, rows, run, end } = klar()
+  const { first, rows, run, end } = klart
 
   beforeAll(async () => {
     await run(
@@ -25,10 +26,10 @@ describe('Klar', () => {
   });
 
   afterAll(async () => {
-    //await end();
+    await end();
   });
 
-  describe('Klar in general', () => {
+  describe('Klart in general', () => {
 
     it('Does not crash on load', () => {
       expect(first).toBeDefined()
