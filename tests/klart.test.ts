@@ -1,5 +1,5 @@
 import * as faker from 'faker'
-import { klart } from '../src/klart'
+import { klart, withConfiguration } from '../src/klart'
 
 
 require('dotenv').config();
@@ -38,6 +38,22 @@ describe('Klar', () => {
     });
 
     it('Appears to pick up values from env', async () => {
+
+      expect(process.env.PGHOST).toBeDefined()
+      expect(process.env.PGUSER).toBeDefined()
+      expect(process.env.PGPASSWORD).toBeDefined()
+      expect(process.env.PGDATABASE).toBeDefined()
+
+      const databaseResult = await first<any>(`select current_database()`);
+      const userResult = await first<any>(`select current_user`);
+
+      expect(databaseResult.current_database).toEqual(process.env.PGDATABASE);
+      expect(userResult.current_user).toEqual(process.env.PGUSER);
+    });
+
+    it('Appears to pick up values from env, even with `withConfiguration`', async () => {
+
+      const { first } = withConfiguration({});
 
       expect(process.env.PGHOST).toBeDefined()
       expect(process.env.PGUSER).toBeDefined()
@@ -111,6 +127,12 @@ describe('Klar', () => {
         expect(original.id).toEqual(updated.id);
         expect(original.name).not.toEqual(newName);
         expect(updated.name).toEqual(newName);
+      });
+
+      it("is possibe to call without returning anything using `run`", async () => {
+
+        const result = await run(`SELECT * FROM dogs`);
+        expect(result).not.toBeDefined();
       });
     });
   });
