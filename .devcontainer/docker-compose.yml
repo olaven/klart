@@ -1,20 +1,20 @@
 version: '3'
 services:
-  klart-workspace:
-    image: node:14
-    volumes:
-      - ..:/workspace:cached
-    command: sleep infinity
+    klart-workspace:
+        image: node:14
+        volumes:
+            - ..:/workspace:cached
+        command: sleep infinity
 
-    links:
-      - db
-  
-  db:
-    image: postgres
-    restart: unless-stopped
-    ports: 
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: pass
-      POSTGRES_USER: user
-      POSTGRES_DB: data
+        links:
+            - db
+
+    db:
+        image: postgres
+        restart: unless-stopped
+        #    ports:
+        #      - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: pass
+            POSTGRES_USER: user
+            POSTGRES_DB: data
