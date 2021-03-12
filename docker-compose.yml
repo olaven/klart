@@ -1,0 +1,25 @@
+version: "3"
+services:
+  klart:
+    image: node:14
+    tty: true
+    volumes:
+      - .:/klart
+    working_dir: /klart
+    depends_on: 
+      - database 
+    environment: 
+      PGHOST: database 
+      PGPORT: 5432 
+      PGUSER: user 
+      PGPASSWORD: pass 
+      PGDATABASE: klart_dev_database
+
+
+  database:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: user
+      POSTGRES_DB: klart_dev_database
+      POSTGRES_DB: klart_dev_database

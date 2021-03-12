@@ -1,19 +1,17 @@
 import * as faker from 'faker'
-import { klart, withConfiguration } from '../src/klart'
+import { klart, withConfiguration } from './klart'
 
-
-require('dotenv').config();
 
 describe('Klar', () => {
 
-  //NOTE: tests have `dogs`-table as an example
   interface Dog {
     id?: string
     name: string
     age: number
-  }
+  };
+
   const randomDog = () => ({
-    name: faker.name.firstName(),
+        name: faker.name.firstName(),
     age: faker.random.number()
   });
 

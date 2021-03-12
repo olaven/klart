@@ -2,7 +2,16 @@
 
 ## About    
 `Klart` is a wrapper around [node-postgres](https://github.com/brianc/node-postgres). It provides 
-a simple interface to make queries towards a PostgreSQL database. Like [Kall](https://github.com/olaven/kall), `Klart` grew out of my work on [Krets](https://krets.app). The current featureset is therefore limited to what I have needed there. However, releasing `Klart` as a separate module is the first step into giving it a life of its own. In other words, feel free to reach out with any suggestions on how it could be expanded!
+a simple interface to make queries towards a PostgreSQL database. Feel free to reach out with any suggestions on how it could be expanded!
+
+## Development Setup 
+The best way to get a working dev environment is to run use [docker compose](https://docs.docker.com/compose/). 
+| command                | purpose                               |
+| ---------------------- | ------------------------------------- |
+| `docker-comopse up -d` | start environment                     |
+| `yarn ssh`             | enter the dev environment             |
+| `docker-compose down`  | tear the development environment down |
+
 
 ## Installation 
 `yarn add klart`
