@@ -1,3 +1,3 @@
-import { Pool } from "pg";
+import { Pool } from 'pg';
 
-export type WithDatabase = <T>(action: (pool: Pool) => Promise<T>) => Promise<T>
+export type WithDatabase = <T>(action: (pool: Pool) => Promise<T>) => Promise<T>;
