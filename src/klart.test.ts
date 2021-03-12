@@ -1,5 +1,5 @@
 import * as faker from 'faker';
-import { klart, withConfiguration } from './klart';
+import { klart, withConfiguration } from '.';
 
 describe('Klar', () => {
   interface Dog {
