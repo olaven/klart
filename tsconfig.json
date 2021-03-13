@@ -1,9 +1,9 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "outDir": "dist",
-        "declaration": true,
-        "declarationDir": "dist"
-    }
+  "compileOnSave": true,
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist"
+  }
 }
