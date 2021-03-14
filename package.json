@@ -1,6 +1,6 @@
 {
   "name": "klart",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "LGPL-2.1",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
