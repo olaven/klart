@@ -26,7 +26,7 @@ type Dog = { name: string, age: number };
 import { first } from "klart";
 
 const fluffy = await first<Dog>("SELECT * FROM dogs WHERE name = $1", [ "fluffy" ]); 
-console.log(`Retrieved a dog called ${dog.name} aged ${dog.age}`); 
+console.log(`Retrieved a dog called ${fluffy.name} aged ${fluffy.age}`); 
 ```
 
 ## Get all rows 

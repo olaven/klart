@@ -1,9 +1,7 @@
 import * as faker from 'faker';
 //import { first, rows, run, end, withConfiguration} from '.';
-//import klart from "."; 
-import { first, rows, run ,end, withConfiguration } from ".";
-
-
+//import klart from ".";
+import { first, rows, run, end, withConfiguration } from '.';
 
 describe('Klar', () => {
   interface Dog {
@@ -16,8 +14,6 @@ describe('Klar', () => {
     name: faker.name.firstName(),
     age: faker.random.number(),
   });
-
-
 
   beforeAll(async () => {
     await run(
