@@ -1,5 +1,9 @@
 import * as faker from 'faker';
-import { klart, withConfiguration } from '.';
+//import { first, rows, run, end, withConfiguration} from '.';
+//import klart from "."; 
+import { first, rows, run ,end, withConfiguration } from ".";
+
+
 
 describe('Klar', () => {
   interface Dog {
@@ -13,7 +17,7 @@ describe('Klar', () => {
     age: faker.random.number(),
   });
 
-  const { first, rows, run, end } = klart;
+
 
   beforeAll(async () => {
     await run(
