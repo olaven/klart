@@ -1,7 +1,5 @@
 import * as faker from 'faker';
-//import { first, rows, run, end, withConfiguration} from '.';
-//import klart from ".";
-import { first, rows, run, end, withConfiguration } from '.';
+import { first, rows, run, withConfiguration } from '.';
 
 describe('Klar', () => {
   interface Dog {
@@ -19,10 +17,6 @@ describe('Klar', () => {
     await run(
       'CREATE TABLE IF NOT EXISTS dogs (id serial primary key, name varchar(100), age integer)'
     );
-  });
-
-  afterAll(async () => {
-    await end();
   });
 
   describe('Klart in general', () => {
@@ -132,42 +126,35 @@ describe('Klar', () => {
     });
   });
 
-  describe("Interacting with differents schemas", () => {
-
-
+  describe('Interacting with differents schemas', () => {
     //NOTE: I guess this could be exported for index if there's ever a user-use for it
     type Klart = {
-      end: (callback?: () => void) => void;
       first: <T>(query: string, values?: any[]) => Promise<T>;
       rows: <T>(query: string, values?: any[]) => Promise<T[]>;
       run: (query: string, values?: any[]) => Promise<any>;
-    }
-
+    };
 
     /*
       Runs callback with a Klart-instance configured with correct schema. 
       Then clears up.
     */
-    const runWithSchema = (schema: string, action: (klart: Klart) => Promise<any>) => 
-      async () => {
+    const runWithSchema = (schema: string, action: (klart: Klart) => Promise<any>) => async () => {
+      process.env.PGOPTIONS = `-c search_path=${schema}`;
+      await action(withConfiguration({}));
+      process.env.PGOPTIONS = ``;
+    };
 
-        process.env.PGOPTIONS = `-c search_path=${schema}`; 
-        await action(withConfiguration({}))
-        process.env.PGOPTIONS = ``; 
-      }
-
-
-    it("Does does change search path when PG_OPTIONS is configured to", 
-      runWithSchema("SOME_SCHEMA", async ({first}) => {
-        const { search_path: searchPath } = await first("SHOW search_path;"); 
-        expect(searchPath).toEqual("SOME_SCHEMA"); 
+    it(
+      'Does does change search path when PG_OPTIONS is configured to',
+      runWithSchema('SOME_SCHEMA', async ({ first }) => {
+        const { search_path: searchPath } = await first('SHOW search_path;');
+        expect(searchPath).toEqual('SOME_SCHEMA');
       })
     );
 
-    it("Does have public as search_path by default", async () => {
-
-      const { search_path: searchPath } = await first("SHOW search_path;"); 
-      expect(searchPath).toEqual("\"$user\", public");
-    }); 
+    it('Does have public as search_path by default', async () => {
+      const { search_path: searchPath } = await first('SHOW search_path;');
+      expect(searchPath).toEqual('"$user", public');
+    });
   });
 });
